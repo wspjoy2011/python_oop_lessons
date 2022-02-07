@@ -27,6 +27,9 @@ class MixinLog:
         dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
         print(f'{self.id} был продан в {dt_string}')
 
+    def print_info(self):
+        print(f'{self.name}: print_info был вызван из класса MixinLog')
+
 
 class MixinLog2:
     def __init__(self, argument1, argument2):
@@ -35,7 +38,8 @@ class MixinLog2:
 
 
 class Notebook(Goods, MixinLog, MixinLog2):
-    pass
+    def print_info(self):
+        MixinLog.print_info(self)
 
 
 acer = Notebook('Acer', 1.4, 15000)
